@@ -1,0 +1,25 @@
+create database moviebookingDb;
+use moviebookingdb;
+
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+CREATE TABLE movies (
+    title VARCHAR(100) PRIMARY KEY,
+    price DECIMAL(10, 2),
+    seats_available INT
+);
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT, -- References the primary key in the users table
+    movie_title VARCHAR(100), -- References the title in the movies table
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (movie_title) REFERENCES movies(title) ON DELETE CASCADE
+);
+
+select * from users;
+select * from movies;
+select * from bookings;
